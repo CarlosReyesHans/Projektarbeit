@@ -1,0 +1,73 @@
+2020.04.17
+/*
+*	NEW GIT HELP COOMMANDS
+*/
+
+TODO
+
+Merge with the one in Ubuntu
+
+
+///// Commands!
+
+git clone github_url local_directory
+git commit
+<esc> :wq <enter>
+git push
+git checkout -b myNewBranch fromThisOrigin
+
+////	CHECK UPDATE STATUS BEFORE PULLING
+git remote -v update
+
+or
+
+git remote update
+
+
+///// 	TO UPDATE A PROJECT FROM THE REVISED VERSION TO AN OLD ONE
+
+Create the project from the branch it will be normally used
+Create the gitignore file
+touch .gitignore
+git config --global core.excludesFile ~/.gitignore
+
+Copy an example or extend the one it is already included
+
+To merge the consequent branches without affecting the general independant structure
+	of the branches:
+
+git checkout develop	//imagine that the change was made in master and we want it to be in all the other branches
+git merge --no-ff master	//master privails as develop has the last changes from master
+
+git checkout feature
+git merge --no-ff develop	//now feature has incorporated the updated version of develop, hence feature has the master's changes as well
+
+/////	USING STASH
+Before changing to any other branch when the modifications are not yet ready
+
+git stash
+After having shown what was needed and being again in the initial branch, 
+	to recover what was previously stashed
+git stash pop
+
+
+////////	SSH KEYS
+
+// Adding an SSH key file to the account such that after pushing there is no
+		request of the passphrase
+
+//	Generating the keys
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+> Enter a file in which to save the key (/c/Users/you/.ssh/id_rsa):[Press enter]
+
+//	Start the ssh-agent
+# start the ssh-agent in the background
+$ eval $(ssh-agent -s)
+> Agent pid XXX
+$ ssh-add ~/.ssh/id_rsa
+
+//	Copying the credentials
+
+$ clip < ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+		
