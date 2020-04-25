@@ -1,0 +1,15 @@
+*************************
+*	RTOS Questions
+*************************
+
+	RTOS is more stable with periphereals timers instead of the systick clock.
+		Why? Apparently some problems with the HAL libraries abstraction
+		
+		Practice>>
+			As developing the first tests of the LED ring, there were two main tasks with normal
+				priorities each, and with the logic analyzer it was possible to see both test signals.
+				There was unfortunetly an overhead almost of 1.5 us. So the RTOS internal clock was changed
+				to the Systick clock @ 180 MHz; nevertheless, it DID NOT work. It even did not schedule
+				the tasks.
+		Is it really processing @ 160 MHz?
+
