@@ -16,6 +16,11 @@ git commit
 git push
 git checkout -b myNewBranch fromThisOrigin
 
+
+/////	GUI to see the network
+
+gitk
+
 ////	CHECK UPDATE STATUS BEFORE PULLING
 git remote -v update
 
