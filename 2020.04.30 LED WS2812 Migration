@@ -1,0 +1,60 @@
+2020.04.30
+2020.05.2
+REcovering the tasks about the LED
+
+
+***************************
+****		STATE
+***************************
+The DMA and PWM @ TIMER1 is already configured, nevertheless, it has erros after creation.
+
+
+	MODIFICATION
+	DMA Type Handler ->>>> There is no request. So delete it.
+	Request is already given depending on the stream of the channel.
+		From Data Sheet DMA_CHANNEL_6 pp207 Reference Manual
+		Stream? TIM1_TRIG? TIM1_CH1 TIM1_COM ==>> DMA2_StreamX_IRQn
+				Probably the Stream4 which is TIM1_COM ==>> comparison TIM1
+
+	PWM @800kHz is working. DMA built but not tested. There is no conflict with the libraries.
+
+***************************
+****		TODO
+***************************
+TODO
+Add the two tasks that will copy and execute the functions of the example
+Why the fuck the PWM DMA copies already the values to the Compare?
+Test the DMA integration.
+
+
+
+
+// Low priority
+
+Create a main Task to manage the others
+
+
+DONE
+
+Read the Migrating code from stm32l4 to stm32f4 (request error)
+	stm32f4 has a dma module distinct to the one from stm32f1 line
+		The latter is equivalent to the stm32l1 line. That was the reason of the request error.
+		
+Using TIMER 1 to be the PWM @ 800kHz
+
+Lernt lesson
+-Not all the timers have compatibility with the DMA peripheral
+	Time9 to 14 not possible
+	Timer 1 and 8 have DMA and APB2 @80MHz
+	
+	
+*******************
+void HAL_TIM_PWM_MspInit <<<---- Initializes the Direct Memory Access 2
+								stm32f4xxx_hal_msp
+void HAL_TIM_MspPostInit <<<---- Initializes the GPIO to match with the PWM configurations
+static void MX_TIM1_Init(void) <<<<----- Configures the PWM but it is not initializing it
+
+This is need
+/*##-3- Start PWM signal generation in DMA mode ############################*/
+	HAL_TIM_PWM_Start_DMA(&TimHandle, TIM_CHANNEL_1, (uint32_t *) LEDbuffer,
+			LED_BUFFER_SIZE);
