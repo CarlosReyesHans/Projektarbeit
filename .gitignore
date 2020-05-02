@@ -39,7 +39,7 @@ Thumbs.db
 
 # ignore a specific directories from the Projektarbeit tree#
 ###############################
-**/Admin
+##**/Admin
 **/02_Software
 
 
