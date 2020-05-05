@@ -22,7 +22,11 @@ The DMA and PWM @ TIMER1 is already configured, nevertheless, it has erros after
 ****		TODO
 ***************************
 TODO
-Add the two tasks that will copy and execute the functions of the example
+Recheck the DMA values configured =, since they could be already mixed up
+	REPETITION COUNTER IS NOT WORKING PROPERLY IN THE TIMER CONFIGURATIONS
+	The pointers might not be working properly
+
+I could check another library
 Why the fuck the PWM DMA copies already the values to the Compare?
 Test the DMA integration.
 
@@ -30,11 +34,12 @@ Test the DMA integration.
 
 
 // Low priority
-
+Is it possible to send messages or signals from the threads to others, such that it can be printed whether something happened or not?
 Create a main Task to manage the others
 
 
 DONE
+Add the two tasks that will copy and execute the functions of the example
 
 Read the Migrating code from stm32l4 to stm32f4 (request error)
 	stm32f4 has a dma module distinct to the one from stm32f1 line
