@@ -40,8 +40,8 @@ Thumbs.db
 # ignore a specific directories from the Projektarbeit tree#
 ###############################
 ##**/Admin
-**/02_Software
-
+##**/02_Software
+**/02_Software/Nucleo-F446
 
 # ignore a specific directory stm32cubeide#
 ###############################
