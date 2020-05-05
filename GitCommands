@@ -27,7 +27,16 @@ git remote -v update
 or
 
 git remote update
-
+/////	Match origin from local folder to remote started git repository
+##	Create the repository and get the link to it
+##	Go to the local directory
+git init
+touch .gitignore
+git add .
+git commit 
+git remote add origin THE_GIT_LINK
+git remote -v ## Verifies
+git push origin master
 
 ///// 	TO UPDATE A PROJECT FROM THE REVISED VERSION TO AN OLD ONE
 
@@ -75,4 +84,8 @@ $ ssh-add ~/.ssh/id_rsa
 
 $ clip < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
-		
+
+
+/////	Config
+
+git config push.default matching # whenever is needed to match names	
