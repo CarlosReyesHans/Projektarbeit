@@ -3,6 +3,15 @@
 *	NEW GIT HELP COOMMANDS
 */
 
+Contents
+*	TODO
+*
+*
+*	SSH Keys
+*	Config (to match names while changing origins)
+*	To Go back to a previous commited point of the branch
+
+
 TODO
 
 Merge with the one in Ubuntu
@@ -65,7 +74,9 @@ After having shown what was needed and being again in the initial branch,
 git stash pop
 
 
-////////	SSH KEYS
+**************************************************************
+*	SSH Keys
+**************************************************************
 
 // Adding an SSH key file to the account such that after pushing there is no
 		request of the passphrase
@@ -86,6 +97,20 @@ $ clip < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
 
 
-/////	Config
+**************************************************************
+*	Config (to match names while changing origins)
+**************************************************************
 
 git config push.default matching # whenever is needed to match names	
+
+**************************************************************
+*	To Go back to a previous commited point of the branch
+**************************************************************
+	
+	git stash				//if there is not-committed modifications 
+	git log --oneline		//to see all commits in the branchline
+	git checkout <commit hash>
+	
+	git revert <unwanted commit hash>	//if the current branch needs to be reverted to a desired state.
+	
+	git checkout -b new_branch_name	//if a new branch is willed to be create from the detached HEAD commit stash
