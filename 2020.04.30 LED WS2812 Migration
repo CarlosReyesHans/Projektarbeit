@@ -6,6 +6,11 @@
 ********************************************************************************************
 ****		STATE
 ********************************************************************************************
+@2020.05.11	While debugging, to neglect that the RTOS was generating problems while preempting
+				The code was adjusted to be a super loop in another project. It still did not work
+				So, the RTOS and the superloop are achieving the same right functionality.
+				THE RING appears to be damaged, since I moved it and other LEDS turned on --23.
+				The PWM signal is so noisy, that it hardly makes think that it is a 800Khz signal.
 @2020.05.10	Lib changed. Now tested. It compiles, controls the leds but there are some bugs
 			at blinking, this could be either buffer or timing. Most likely is buffer, since 
 			after a while it works again (changing color is incrementing its position).
@@ -32,6 +37,12 @@
 ********************************************************************************************
 
 Lernt lesson
+	- When a new project is created with the MX tool, check whether the clock is being recognized
+		by using the HAL_Delay. Since it could happen that is not "linked" and the processor fails
+		to execute the Read Ticks function.
+	- The buffer is correctly updated, the ring might be damaged. So far that is the conclusion.
+		It was tested as superloop and something related to the DMA interruption did not working
+		
 @2020.05.10
 	- Callbacks functions are inside the Int file which is created automatically by the compiler.
 	- Init MSP has also the configurations for some Peripherals, example DMA.
@@ -49,10 +60,11 @@ Lernt lesson
 ********************************************************************************************
 
 *TODO*
-	Check buffer bug and size
-	Change size of buffer to match size of ring
+	clean code
 	embed the config functions into the task
-
+	try with another ring
+	PWM needs to be analized with another Logic Analizer
+	Create a task to switch between the Temperature and the LED Control.
 
 
 
@@ -63,6 +75,9 @@ Lernt lesson
 
 
 DONE
+	check with the library but as a standalone project
+	Check buffer bug and size
+	Change size of buffer to match size of ring
 @2020.05.10
 	Recheck the DMA values configured =, since they could be already mixed up
 		REPETITION COUNTER IS NOT WORKING PROPERLY IN THE TIMER CONFIGURATIONS
